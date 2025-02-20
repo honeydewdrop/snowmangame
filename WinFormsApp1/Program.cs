@@ -11,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Numerics;
+using System.Media;
 
 public class SnowmanGame : Form
 {
@@ -35,6 +37,9 @@ public class SnowmanGame : Form
 
     private void InitializeComponents()
     {
+
+        System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\samia\Downloads\festv-frlix.wav");
+
         // Welcome Panel
         welcomePanel = new Panel { Size = new Size(800, 600), BackColor = Color.LightBlue };
 
@@ -136,6 +141,8 @@ public class SnowmanGame : Form
         gamePanel.Controls.Add(btnGuess);
         gamePanel.Controls.Add(pbSnowman);
         Controls.Add(gamePanel);
+
+        player.Play();
 
     }
 
@@ -263,7 +270,7 @@ public class SnowmanGame : Form
             if (guessesLeft <= 1) g.DrawLine(Pens.Black, 20, 70, 50, 90); // Left Arm
             if (guessesLeft <= 0) g.DrawLine(Pens.Black, 120, 70, 90, 90); // Right Arm
             if (guessesLeft <= 5) g.DrawEllipse(Pens.Black, 40, 130, 80, 80); // Base
-            if (guessesLeft == 2){
+            if (guessesLeft <= 2){
                 g.FillRectangle(Brushes.Black, 58, -15, 40, 40);  // Hat top (rectangle) 
                 g.FillRectangle(Brushes.Black, 50, 18, 60, 10);  // Hat brim (wider rectangle)
             }

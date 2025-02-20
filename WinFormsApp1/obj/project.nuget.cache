@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "XmSDGw+DodI=",
+  "dgSpecHash": "1zQRurkImV8=",
   "success": true,
   "projectFilePath": "C:\\Users\\samia\\source\\repos\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\samia\\.nuget\\packages\\system.windows.extensions\\9.0.2\\system.windows.extensions.9.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
