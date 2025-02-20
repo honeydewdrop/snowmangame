@@ -30,33 +30,33 @@ public class SnowmanGame : Form
     public SnowmanGame()
     {
         Text = "Snowman Game";
-        Size = new Size(800, 600);
+        AutoSize = true;
         InitializeComponents(); // Show welcome screen first
         ShowWelcomeScreen(null, null);
     }
 
     private void InitializeComponents()
     {
-
         System.Media.SoundPlayer player = new System.Media.SoundPlayer(@"C:\Users\samia\Downloads\festv-frlix.wav");
 
         // Welcome Panel
-        welcomePanel = new Panel { Size = new Size(800, 600), BackColor = Color.LightBlue };
+        welcomePanel = new Panel { Dock = DockStyle.Fill, BackColor = Color.LightBlue };
 
         lblWelcome = new Label
         {
             Text = "Welcome to Snowman Game",
             Font = new Font("The Heart Maze Demo", 22, FontStyle.Bold),
             AutoSize = true,
-            Location = new Point(175, 100)
+            Location = new Point(550, 120)
         };
 
-        lblWordTest = new Label
-        {
-            Text = "",
-            Font = new Font("Arial", 16),
-            Location = new Point(225, 300)
-        };
+        //lblWordTest = new Label
+        //{
+        //    Text = "",
+        //    Font = new Font("Arial", 16),
+        //    Location = new Point(225, 300),
+        //    AutoSize = true
+        //};
 
         lblYourGuesses = new Label
         {
@@ -77,27 +77,33 @@ public class SnowmanGame : Form
         btnStartGame = new Button
         {
             Text = "Start Game",
-            Location = new Point(350, 300),
+            Location = new Point(700, 600),
             Size = new Size(100, 40)
         };
         btnStartGame.Click += StartGame;
 
         pbSnowmanWelcome = new PictureBox
         {
-            Location = new Point(100, 170),
-            Size = new Size(250, 250)
+            Location = new Point(600, 200),
+            Size = new Size(310, 350)
         };
 
-        pbSnowmanWelcome.Image = new Bitmap(250, 250);
+        pbSnowmanWelcome.Image = new Bitmap(310, 350);
         using (Graphics g = Graphics.FromImage(pbSnowmanWelcome.Image))
         {
-            g.DrawEllipse(Pens.Black, 50, 10, 50, 50); // Head
-            g.DrawEllipse(Pens.Black, 40, 60, 70, 70); // Body
-            g.DrawLine(Pens.Black, 20, 70, 50, 90); // Left Arm
-            g.DrawLine(Pens.Black, 120, 70, 90, 90); // Right Arm
-            g.DrawEllipse(Pens.Black, 40, 130, 80, 80); // Base
-            g.FillRectangle(Brushes.Black, 58, -15, 40, 40);  // Hat top (rectangle)
-            g.FillRectangle(Brushes.Black, 50, 18, 60, 10);  // Hat brim (wider rectangle)
+            // Clear the background (optional, depending on your design)
+            g.Clear(Color.Transparent); // Or use a background color like Color.White
+
+            // Draw the snowman
+            g.DrawEllipse(Pens.Black, 110, 55, 80, 80); // Head (repositioned slightly lower)
+            g.DrawEllipse(Pens.Black, 100, 135, 95, 95); // Body (repositioned to align with the head)
+            g.DrawLine(Pens.Black, 80, 150, 110, 170); // Left Arm (repositioned)
+            g.DrawLine(Pens.Black, 220, 150, 190, 170); // Right Arm (repositioned)
+            g.DrawEllipse(Pens.Black, 90, 230, 115, 115); // Base (repositioned to align with the body)
+
+            // Draw the hat on top of the head
+            g.FillRectangle(Brushes.Black, 130, 10, 50, 50); // Hat top (rectangle, positioned above the head)
+            g.FillRectangle(Brushes.Black, 110, 60, 90, 10); // Hat brim (wider rectangle, positioned below the hat top)
         }
 
         lblHelpInfo = new Label
@@ -105,12 +111,11 @@ public class SnowmanGame : Form
             Text = "You must guess letters in the random word." +
                 " Letters a-z, hyphens, and apostrophes are valid characters." +
                 " You have 6 guesses until the snowman is complete!",
-            Location = new Point(160, 450),
+            Location = new Point(525, 700),
             Width = 500,
             Height = 400,
             Font = new Font("Arial", 14, FontStyle.Regular)
         };
-
 
         welcomePanel.Controls.Add(pbSnowmanWelcome);
         welcomePanel.Controls.Add(lblWelcome);
@@ -119,7 +124,7 @@ public class SnowmanGame : Form
         Controls.Add(welcomePanel);
 
         // Game Panel (Hidden Initially)
-        gamePanel = new Panel { Size = new Size(800, 600), Visible = false, BackColor = Color.LightBlue};
+        gamePanel = new Panel { Dock = DockStyle.Fill, Visible = false, BackColor = Color.LightBlue };
 
         lblWord = new Label { Text = "", Location = new Point(20, 20), Width = 200 };
         lblGuesses = new Label { Text = "Guesses Left: 6", Location = new Point(20, 50) };
@@ -143,7 +148,6 @@ public class SnowmanGame : Form
         Controls.Add(gamePanel);
 
         player.Play();
-
     }
 
     private void ShowWelcomeScreen(object sender, EventArgs e = null)
