@@ -21,3 +21,4 @@ C:\Users\samia\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\S
 C:\Users\samia\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Windows.Extensions.dll
 C:\Users\samia\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.AssemblyReference.cache
 C:\Users\samia\source\repos\WinFormsApp1\WinFormsApp1\obj\Debug\net8.0-windows\WinForms.E4050A35.Up2Date
+C:\Users\samia\source\repos\WinFormsApp1\WinFormsApp1\bin\Debug\net8.0-windows\Sounds\festv-frlix.wav

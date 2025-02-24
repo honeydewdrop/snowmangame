@@ -22,4 +22,10 @@
     <PackageReference Include="System.Windows.Extensions" Version="9.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Sounds\festv-frlix.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
