@@ -37,7 +37,23 @@ public class SnowmanGame : Form
         Text = "Snowman Game";
         AutoSize = true;
         InitializeComponents(); // Show welcome screen first
-        ShowWelcomeScreen(null, null);
+        SetWindowSize();
+    }
+
+    private void SetWindowSize()
+    {
+        // Get the primary screen's working area (excluding taskbars, etc.)
+        Rectangle screenBounds = Screen.PrimaryScreen.WorkingArea;
+
+        // Set the window size to 80% of the screen width and height
+        int windowWidth = (int)(screenBounds.Width * 0.8);
+        int windowHeight = (int)(screenBounds.Height * 0.8);
+
+        // Set the window size
+        Size = new Size(windowWidth, windowHeight);
+
+        // Center the window on the screen
+        StartPosition = FormStartPosition.CenterScreen;
     }
 
     private void InitializeComponents()
