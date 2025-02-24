@@ -131,7 +131,7 @@ public class SnowmanGame : Form
         // Game Panel (Hidden Initially)
         gamePanel = new Panel { Dock = DockStyle.Fill, Visible = false, BackColor = Color.LightBlue }; 
 
-        lblWord = new Label { Text = "", Location = new Point(150, 400), Width = 200, Font = new Font("Arial", 18, FontStyle.Bold) }; // parts of the game screen
+        lblWord = new Label { Text = "", Location = new Point(140, 400), Width = 200, Font = new Font("Arial", 14, FontStyle.Bold) }; // parts of the game screen
         lblGuesses = new Label { Text = "Guesses Left: 6", Location = new Point(1000, 400), AutoSize = true, Font = new Font("Arial", 18, FontStyle.Bold)};
         lblFeedback = new Label { Text = "", Location = new Point(1000, 450), AutoSize = true, Font = new Font("Arial", 18, FontStyle.Bold) };
 
