@@ -35,9 +35,9 @@ public class SnowmanGame : Form
     public SnowmanGame()
     {
         Text = "Snowman Game";
-        AutoSize = true;
+        AutoSize = false;
         InitializeComponents(); // Show welcome screen first
-        SetWindowSize();
+        Size = new Size(1400, 850);
     }
 
     private void SetWindowSize()
@@ -167,29 +167,6 @@ public class SnowmanGame : Form
         Controls.Add(gamePanel);
 
         player.Play(); // play music
-    }
-
-    private void PositionControls()
-    {
-        // Welcome panel controls
-        lblWelcome.Location = new Point((welcomePanel.Width - lblWelcome.Width) / 2, 50);
-        btnStartGame.Location = new Point((welcomePanel.Width - btnStartGame.Width) / 2, welcomePanel.Height - 150);
-        pbSnowmanWelcome.Location = new Point((welcomePanel.Width - pbSnowmanWelcome.Width) / 2, 200);
-        lblHelpInfo.Location = new Point((welcomePanel.Width - lblHelpInfo.Width) / 2, welcomePanel.Height - 100);
-
-        // Game panel controls
-        lblWord.Location = new Point((gamePanel.Width - lblWord.Width) / 2, 50);
-        lblGuesses.Location = new Point(gamePanel.Width - 200, 50);
-        lblFeedback.Location = new Point(gamePanel.Width - 200, 100);
-        txtGuess.Location = new Point((gamePanel.Width - txtGuess.Width) / 2, 150);
-        btnGuess.Location = new Point((gamePanel.Width - btnGuess.Width) / 2 + 100, 150);
-        pbSnowmanDraw.Location = new Point((gamePanel.Width - pbSnowmanDraw.Width) / 2, 200);
-    }
-
-    private void SnowmanGame_Resize(object sender, EventArgs e)
-    {
-        // Reposition controls when the window is resized
-        PositionControls();
     }
 
     // Shows the welcome screen
