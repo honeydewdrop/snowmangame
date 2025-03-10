@@ -20,7 +20,7 @@ using Microsoft.VisualBasic.ApplicationServices;
 public class SnowmanGame : Form
 {
     // Our global variables
-    private Label lblWord, lblGuesses, lblFeedback, lblWelcome, lblHelpInfo, lblGuessed, lblYourGuesses, lblWordTest;
+    private Label lblWord, lblGuesses, lblFeedback, lblWelcome, lblHelpInfo, lblGuessed, lblYourGuesses, lblWordTest, lblTitle;
     private TextBox txtGuess;
     private Button btnGuess, btnStartGame, btnHelp, btnBack;
     private PictureBox pbSnowmanDraw, pbSnowmanWelcome;
@@ -58,9 +58,9 @@ public class SnowmanGame : Form
 
     private void InitializeComponents()
     {
-        string soundPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sounds", "festv-frlix.wav"); // made a sound folder so the sound can be accessed on any device
-        System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundPath);
-        player.Play();
+        //string soundPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Sounds", "festv-frlix.wav"); // made a sound folder so the sound can be accessed on any device
+        //System.Media.SoundPlayer player = new System.Media.SoundPlayer(soundPath);
+        //player.Play();
 
         // Welcome Panel
         welcomePanel = new Panel { Dock = DockStyle.Fill, BackColor = Color.LightBlue };
@@ -76,17 +76,17 @@ public class SnowmanGame : Form
         lblYourGuesses = new Label
         {
             Text = "Your Guesses:",
-            Font = new Font("The Heart Maze Demo", 22, FontStyle.Bold),
+            Font = new Font("The Heart Maze Demo", 36, FontStyle.Bold),
             AutoSize = true,
-            Location = new Point(650, 600)
+            Location = new Point(550, 600)
         };
 
         lblGuessed = new Label
         {
             Text = "",
-            Font = new Font("Arial", 18, FontStyle.Bold),
+            Font = new Font("Arial", 36, FontStyle.Bold),
             AutoSize = true,
-            Location = new Point(675, 700)
+            Location = new Point(575, 700)
         };
 
         btnStartGame = new Button
@@ -145,14 +145,63 @@ public class SnowmanGame : Form
         Controls.Add(welcomePanel);
 
         // Game Panel (Hidden Initially)
-        gamePanel = new Panel { Dock = DockStyle.Fill, Visible = false, BackColor = Color.LightBlue }; 
+        gamePanel = new Panel { Dock = DockStyle.Fill, Visible = false, BackColor = Color.LightBlue };
 
-        lblWord = new Label { Text = "", Location = new Point(140, 400), Width = 200, Font = new Font("Arial", 14, FontStyle.Bold) }; // parts of the game screen
-        lblGuesses = new Label { Text = "Guesses Left: 6", Location = new Point(1000, 400), AutoSize = true, Font = new Font("Arial", 18, FontStyle.Bold)};
-        lblFeedback = new Label { Text = "", Location = new Point(1000, 450), AutoSize = true, Font = new Font("Arial", 18, FontStyle.Bold) };
+        // Make "Guesses Left" label larger
 
-        txtGuess = new TextBox { Location = new Point(140, 450), Width = 50, MaxLength = 1 };
-        btnGuess = new Button { Text = "Guess", Location = new Point(200, 450), Width = 80, Font = new Font("Arial", 12) };
+        
+        lblTitle = new Label
+        
+        {
+            Text = "Snowman Game",
+            Location = new Point(600, 120),
+            AutoSize = true,
+            Font = new Font("The Heart Maze Demo", 28, FontStyle.Bold),
+        };
+
+        lblGuesses = new Label
+        {
+            Text = "Guesses Left: 6",
+            Location = new Point(1000, 400),
+            AutoSize = true,
+            Font = new Font("Arial", 36, FontStyle.Bold) // Increased font size to 24
+        };
+
+        // Make "Feedback" label larger
+        lblFeedback = new Label
+        {
+            Text = "",
+            Location = new Point(1000, 500),
+            AutoSize = true,
+            Font = new Font("Arial", 36, FontStyle.Bold) // Increased font size to 24
+        };
+
+        // Make lblWord larger
+        lblWord = new Label
+        {
+            Text = "",
+            Location = new Point(140, 400), // Adjust location if needed
+            AutoSize = true, // Allow the label to resize based on content
+            Font = new Font("Arial", 36, FontStyle.Bold) // Increased font size to 24
+        };
+
+        // Make txtGuess larger
+        txtGuess = new TextBox
+        {
+            Location = new Point(140, 450), // Adjust location if needed
+            Width = 100, // Increased width to accommodate larger text
+            Font = new Font("Arial", 36, FontStyle.Regular) // Increased font size to 18
+        };
+
+        // Make btnGuess larger
+        btnGuess = new Button
+        {
+            Text = "Guess",
+            Location = new Point(250, 463), // Adjust location to align with txtGuess
+            Size = new Size(170, 50), // Increased size to accommodate larger text
+            Font = new Font("Arial", 28, FontStyle.Bold) // Increased font size to 18
+        };
+
         btnGuess.Click += MakeGuess;
 
         gamePanel.Controls.Add(lblWord); // add parts of game attributes to the game screen
@@ -164,6 +213,7 @@ public class SnowmanGame : Form
         gamePanel.Controls.Add(txtGuess);
         gamePanel.Controls.Add(btnGuess);
         gamePanel.Controls.Add(pbSnowmanDraw);
+        gamePanel.Controls.Add(lblTitle);
         Controls.Add(gamePanel);
 
         player.Play(); // play music
@@ -241,7 +291,7 @@ public class SnowmanGame : Form
 
         //If user guesses the same letter
         if (guessedLetters.Contains(userChar)) {
-            lblFeedback.Text = "You already guessed this letter.";
+            lblFeedback.Text = "Already guessed.";
             return;
         } else {
             //Add the guessed letter to guessedLetters array
@@ -254,7 +304,7 @@ public class SnowmanGame : Form
                 if (lblGuessed.Text.Contains(guessedLetters[i])) {
                     continue;
                 }
-                lblGuessed.Text += guessedLetters[i];
+                lblGuessed.Text += " " + guessedLetters[i];
             }
             numGuesses++;
         }
@@ -267,7 +317,7 @@ public class SnowmanGame : Form
         // Convert the sorted characters back to a string
         string sortedText = new string(characters);
         // Update the label with the sorted text
-        lblGuessed.Text = sortedText;
+        lblGuessed.Text = string.Join(" ", guessedLetters);
 
         // If we guessed the random word
         if (progressedWord == randomWord) {
