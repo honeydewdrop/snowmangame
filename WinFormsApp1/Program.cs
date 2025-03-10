@@ -26,7 +26,6 @@ public class SnowmanGame : Form
     private PictureBox pbSnowmanDraw, pbSnowmanWelcome;
     private char[] guessedLetters = new char[0];
     private int guessesLeft = 6;
-    private static int numGuesses = 0;
     public string randomWord;
     public string progressedWord;
     private Panel welcomePanel, gamePanel;
@@ -65,7 +64,7 @@ public class SnowmanGame : Form
         // Welcome Panel
         welcomePanel = new Panel { Dock = DockStyle.Fill, BackColor = Color.LightBlue };
 
-        lblWelcome = new Label
+        lblWelcome = new Label //title
         {
             Text = "Welcome to Snowman Game",
             Font = new Font("The Heart Maze Demo", 22, FontStyle.Bold),
@@ -73,7 +72,7 @@ public class SnowmanGame : Form
             Location = new Point(550, 120)
         };
 
-        lblYourGuesses = new Label
+        lblYourGuesses = new Label // your guesses text
         {
             Text = "Your Guesses:",
             Font = new Font("The Heart Maze Demo", 36, FontStyle.Bold),
@@ -81,7 +80,7 @@ public class SnowmanGame : Form
             Location = new Point(550, 600)
         };
 
-        lblGuessed = new Label
+        lblGuessed = new Label // letters guessed 
         {
             Text = "",
             Font = new Font("Arial", 36, FontStyle.Bold),
@@ -89,7 +88,7 @@ public class SnowmanGame : Form
             Location = new Point(575, 700)
         };
 
-        btnStartGame = new Button
+        btnStartGame = new Button // click this to start the game
         {
             Text = "Start Game",
             Location = new Point(700, 600),
@@ -97,7 +96,7 @@ public class SnowmanGame : Form
         };
         btnStartGame.Click += StartGame;
 
-        pbSnowmanWelcome = new PictureBox
+        pbSnowmanWelcome = new PictureBox // snowman displayed at top of screen
         {
             Location = new Point(600, 200),
             Size = new Size(310, 350)
@@ -116,15 +115,15 @@ public class SnowmanGame : Form
             g.Clear(Color.Transparent); 
 
             // Draw the snowman
-            g.DrawEllipse(Pens.Black, 110, 55, 80, 80); // Head (repositioned slightly lower)
-            g.DrawEllipse(Pens.Black, 100, 135, 95, 95); // Body (repositioned to align with the head)
-            g.DrawLine(Pens.Black, 80, 150, 110, 170); // Left Arm (repositioned)
-            g.DrawLine(Pens.Black, 220, 150, 190, 170); // Right Arm (repositioned)
-            g.DrawEllipse(Pens.Black, 90, 230, 115, 115); // Base (repositioned to align with the body)
+            g.DrawEllipse(Pens.Black, 110, 55, 80, 80); // Head 
+            g.DrawEllipse(Pens.Black, 100, 135, 95, 95); // Body 
+            g.DrawLine(Pens.Black, 80, 150, 110, 170); // Left Arm
+            g.DrawLine(Pens.Black, 220, 150, 190, 170); // Right Arm 
+            g.DrawEllipse(Pens.Black, 90, 230, 115, 115); // Base 
 
             // Draw the hat on top of the head
-            g.FillRectangle(Brushes.Black, 130, 10, 50, 50); // Hat top (rectangle, positioned above the head)
-            g.FillRectangle(Brushes.Black, 110, 60, 90, 10); // Hat brim (wider rectangle, positioned below the hat top)
+            g.FillRectangle(Brushes.Black, 130, 10, 50, 50); // Hat top 
+            g.FillRectangle(Brushes.Black, 110, 60, 90, 10); // Hat brim 
         }
 
         lblHelpInfo = new Label // displays instructions on the home screen
@@ -147,10 +146,9 @@ public class SnowmanGame : Form
         // Game Panel (Hidden Initially)
         gamePanel = new Panel { Dock = DockStyle.Fill, Visible = false, BackColor = Color.LightBlue };
 
-        // Make "Guesses Left" label larger
 
         
-        lblTitle = new Label
+        lblTitle = new Label // display this at top of game screen
         
         {
             Text = "Snowman Game",
@@ -159,41 +157,41 @@ public class SnowmanGame : Form
             Font = new Font("The Heart Maze Demo", 28, FontStyle.Bold),
         };
 
-        lblGuesses = new Label
+        lblGuesses = new Label // displays how many guesses are left
         {
             Text = "Guesses Left: 6",
             Location = new Point(1000, 400),
             AutoSize = true,
-            Font = new Font("Arial", 36, FontStyle.Bold) // Increased font size to 24
+            Font = new Font("Arial", 36, FontStyle.Bold) 
         };
 
-        // Make "Feedback" label larger
+        // tells if correct, wrong, or already guessed
         lblFeedback = new Label
         {
             Text = "",
             Location = new Point(1000, 500),
             AutoSize = true,
-            Font = new Font("Arial", 36, FontStyle.Bold) // Increased font size to 24
+            Font = new Font("Arial", 36, FontStyle.Bold) 
         };
 
-        // Make lblWord larger
+        // where the word is displayed and updated as guesses occur
         lblWord = new Label
         {
             Text = "",
             Location = new Point(140, 400), // Adjust location if needed
             AutoSize = true, // Allow the label to resize based on content
-            Font = new Font("Arial", 36, FontStyle.Bold) // Increased font size to 24
+            Font = new Font("Arial", 36, FontStyle.Bold) 
         };
 
-        // Make txtGuess larger
+        // input where user types a guess
         txtGuess = new TextBox
         {
             Location = new Point(140, 450), // Adjust location if needed
             Width = 100, // Increased width to accommodate larger text
-            Font = new Font("Arial", 36, FontStyle.Regular) // Increased font size to 18
+            Font = new Font("Arial", 36, FontStyle.Regular) 
         };
 
-        // Make btnGuess larger
+        // button that submits the txtGuess
         btnGuess = new Button
         {
             Text = "Guess",
@@ -216,7 +214,7 @@ public class SnowmanGame : Form
         gamePanel.Controls.Add(lblTitle);
         Controls.Add(gamePanel);
 
-        player.Play(); // play music
+        //player.Play(); // play music
     }
 
     // Shows the welcome screen
@@ -250,8 +248,8 @@ public class SnowmanGame : Form
     private void MakeGuess(object sender, EventArgs e)
     {
         //If nothing is entered
-        if (txtGuess.Text.Length == 0) return;
-        char userChar = char.ToLower(txtGuess.Text[0]);
+        if (txtGuess.Text.Length == 0) return; // return nothing
+        char userChar = char.ToLower(txtGuess.Text[0]); // case insensitivity
         txtGuess.Clear();
 
         
@@ -273,7 +271,7 @@ public class SnowmanGame : Form
                 }
             }
             lblWord.Text = progressedWord;
-            lblFeedback.Text = "Correct!";
+            lblFeedback.Text = "Correct!"; // feedback
         }
         else
         {
@@ -306,7 +304,6 @@ public class SnowmanGame : Form
                 }
                 lblGuessed.Text += " " + guessedLetters[i];
             }
-            numGuesses++;
         }
 
         string text = lblGuessed.Text;
@@ -321,7 +318,7 @@ public class SnowmanGame : Form
 
         // If we guessed the random word
         if (progressedWord == randomWord) {
-            // show win screen and reset so the user can play again
+            // show win window and reset so the user can play again
             MessageBox.Show("You win! Congrats.");
             lblGuesses.Text = string.Empty;
             lblGuessed.Text = string.Empty;
@@ -333,7 +330,7 @@ public class SnowmanGame : Form
             lblFeedback.Refresh();
         // If the user used all their guesses
         } else if (guessesLeft == 0) {
-            // show loss screen and reset so the user can play again
+            // show loss screen and reset stuff so the user can play again
             MessageBox.Show("You lose! The word was: " + randomWord);
             lblGuesses.Text = string.Empty;
             lblGuessed.Text = string.Empty;
@@ -359,16 +356,16 @@ public class SnowmanGame : Form
             g.Clear(Color.Transparent); // Or use a background color like Color.White
 
             // Draw the snowman
-            if(guessesLeft <= 3) g.DrawEllipse(Pens.Black, 110, 55, 80, 80); // Head (repositioned slightly lower)
-            if(guessesLeft <= 4) g.DrawEllipse(Pens.Black, 100, 135, 95, 95); // Body (repositioned to align with the head)
-            if(guessesLeft <= 1) g.DrawLine(Pens.Black, 80, 150, 110, 170); // Left Arm (repositioned)
-            if(guessesLeft <= 0) g.DrawLine(Pens.Black, 220, 150, 190, 170); // Right Arm (repositioned)
-            if(guessesLeft <= 5) g.DrawEllipse(Pens.Black, 90, 230, 115, 115); // Base (repositioned to align with the body
+            if(guessesLeft <= 3) g.DrawEllipse(Pens.Black, 110, 55, 80, 80); // Head 
+            if(guessesLeft <= 4) g.DrawEllipse(Pens.Black, 100, 135, 95, 95); // Body 
+            if(guessesLeft <= 1) g.DrawLine(Pens.Black, 80, 150, 110, 170); // Left Arm 
+            if(guessesLeft <= 0) g.DrawLine(Pens.Black, 220, 150, 190, 170); // Right Arm
+            if(guessesLeft <= 5) g.DrawEllipse(Pens.Black, 90, 230, 115, 115); // Base
             if (guessesLeft <= 2)
             {
-                g.FillRectangle(Brushes.Black, 130, 10, 50, 50); // Hat top (rectangle, positioned above the head)
+                g.FillRectangle(Brushes.Black, 130, 10, 50, 50); // Hat top 
                 g.FillRectangle(Brushes.Black, 110, 60, 90, 10);
-            }// Hat brim (wider rectangle, positioned below the hat top)
+            }// Hat brim 
         }
 
     }

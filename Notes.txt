@@ -1,0 +1,34 @@
+Program: Snowman Game
+Written by: Sam Adams, Kevin Graziosi, Lenny Tran
+Date: 2/20/25
+This program lets a user play the Snowman Game. A random word is chosen from a file, and the player must guess that random word
+within 6 guesses. For each incorrect guess, a part of the snowman is drawn. If all parts of the snowman are drawn, you lose. For each
+correct guess, all instances of the letter are revealed in the word. For every guess, the letter is added to an array of guessed words
+that is shown at the bottom of the screen. When the player guesses the word, they win.
+
+How do I get a random word from a .txt file using C#? - Stack Overflow
+What does `static` mean in c#? - Stack Overflow
+
+
+https://stackoverflow.com/questions/19860677/how-to-read-char-from-the-console
+
+
+https://sentry.io/answers/how-to-add-values-to-an-array-in-c-sharp/#:~:text=Add%20Items%20to%20an%20Array&text=char%5B%5D%20letter%20%3D%20new%20char,a'%2C%20'b'%20%7D%3B
+
+
+https://stackoverflow.com/questions/14368129/how-to-use-global-variables-in-c
+
+
+C# you need string building
+
+https://www.codecademy.com/resources/docs/c-sharp/strings/replace
+
+https://learn.microsoft.com/en-us/visualstudio/ide/create-csharp-winform-visual-studio?view=vs-2022
+
+https://stackoverflow.com/questions/79494353/form-automatically-increasing-its-width-in-visual-studio
+
+https://stackoverflow.com/questions/3214351/how-to-dock-a-windows-form-in-c
+
+https://learn.microsoft.com/en-us/dotnet/api/system.drawing.pen?view=windowsdesktop-9.0
+
+https://stackoverflow.com/questions/544590/custom-ttf-fonts-to-use-in-c-sharp-windows-form
